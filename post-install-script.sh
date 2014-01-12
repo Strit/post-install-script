@@ -25,14 +25,21 @@ sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 sudo apt-get update
 
 #install programs
-sudo apt-get -y install handbrake-gtk audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder chrome wine1.7
+sudo apt-get -y install handbrake-gtk audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder wine1.7
 
 #uninstall programs
 sudo apt-get -y autoremove rhythmbox empathy firefox
 
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
 
-#install steam
+#install Chrome Browser
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get -f install
+rm google-chrome-stable_current_amd64.deb
+
+
+#install Steam
 wget http://media.steampowered.com/client/installer/steam.deb
 sudo dpkg -i steam.deb
 sudo apt-get -f -y install
