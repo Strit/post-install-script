@@ -35,7 +35,7 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 #install Chrome Browser
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get -f install
+sudo apt-get -f -y install
 rm google-chrome-stable_current_amd64.deb
 
 
@@ -81,6 +81,7 @@ Filezilla
 Flash Player
 Restricted Extras
 Clementine
+Chrome
 Dropbox
 Steam
 Wine 1.7
@@ -88,6 +89,7 @@ Video and DVD plugins"
 
 echo "Programs uninstalled succesfully:
 Rhythmbox
-Empathy"
+Empathy
+Firefox"
 
 #echo "Remember to install Wine1.7, Dropbox and Steam after this installation"
