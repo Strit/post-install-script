@@ -34,9 +34,9 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 
 #Installing Chrome, Steam and Dropbox
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb steam.deb dropbox_1.6.0_amd64.deb
+sudo dpkg -i *.deb
 sudo apt-get -f -y install
-rm google-chrome-stable_current_amd64.deb steam.deb dropbox_1.6.0_amd64.deb
+rm *.deb
 
 #install Chrome Browser
 #wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
