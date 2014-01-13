@@ -5,7 +5,7 @@ echo "Adding Repositories and installing programs.
 Please type your password!"
 
 
-#This edit is to try and minimize the amount of code to accomplish the same.
+#Test with 64-bit and 32-bit code.
 
 #enable username on panel
 gsettings set com.canonical.indicator.session show-real-name-on-panel true
@@ -35,8 +35,19 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 #these are disabled to test if they are needed when Ubuntu is installed with 3rd party software.
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
 
-#Installing Chrome, Steam and Dropbox
+#Checking OS architecture
+if [$var=x64]
+then
+
+#Getting install files for Chrome, Steam and Dropbox 64-bit
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
+
+else
+#Getting install files for Chrome, Steam and Dropbox 32-bit
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb
+fi
+
+#Installing packages
 sudo dpkg -i *.deb
 sudo apt-get -f -y install
 rm *.deb
