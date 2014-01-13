@@ -36,7 +36,7 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
 
 #Checking OS architecture
-if [$var=x64]
+if [ $var=x64 ]
 then
 
 #Getting install files for Chrome, Steam and Dropbox 64-bit
