@@ -5,7 +5,7 @@ echo "Adding Repositories and installing programs.
 Please type your password!"
 
 
-#This is a test to see if edits work on github!
+#This edit is to try and minimize the amount of code to accomplish the same.
 
 #enable username on panel
 gsettings set com.canonical.indicator.session show-real-name-on-panel true
@@ -16,10 +16,10 @@ gsettings set com.canonical.desktop.interface scrollbar-mode normal
 
 
 #adding repo's
-sudo add-apt-repository -y ppa:ubuntu-wine/ppa 
-sudo add-apt-repository -y ppa:stebbins/handbrake-releases 
-sudo add-apt-repository -y ppa:tualatrix/ppa 
-sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
+sudo add-apt-repository -y ppa:ubuntu-wine/ppa ppa:stebbins/handbrake-releases ppa:tualatrix/ppa ppa:maarten-baert/simplescreenrecorder
+#sudo add-apt-repository -y ppa:stebbins/handbrake-releases 
+#sudo add-apt-repository -y ppa:tualatrix/ppa 
+#sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 
 #Update repo list
 sudo apt-get update
@@ -32,24 +32,30 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
 
-#install Chrome Browser
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+#Installing Chrome, Steam and Dropbox
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb steam.deb dropbox_1.6.0_amd64.deb
 sudo apt-get -f -y install
-rm google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb steam.deb dropbox_1.6.0_amd64.deb
+
+#install Chrome Browser
+#wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#sudo dpkg -i google-chrome-stable_current_amd64.deb
+#sudo apt-get -f -y install
+#rm google-chrome-stable_current_amd64.deb
 
 
 #install Steam
-wget http://media.steampowered.com/client/installer/steam.deb
-sudo dpkg -i steam.deb
-sudo apt-get -f -y install
-rm steam.deb
+#wget http://media.steampowered.com/client/installer/steam.deb
+#sudo dpkg -i steam.deb
+#sudo apt-get -f -y install
+#rm steam.deb
 
 #install Dropbox
-wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
-sudo dpkg -i dropbox_1.6.0_amd64.deb
-sudo apt-get -f -y install
-rm dropbox_1.6.0_amd64.deb
+#wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
+#sudo dpkg -i dropbox_1.6.0_amd64.deb
+#sudo apt-get -f -y install
+#rm dropbox_1.6.0_amd64.deb
 
 #get griffith to work properly
 wget http://www.strits.dk/files/validators.py
