@@ -19,7 +19,7 @@ killall nautilus
 
 #adding repo's
 sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-sudo add-apt-repository -y ppa:stebbins/handbrake-releases 
+#sudo add-apt-repository -y ppa:stebbins/handbrake-releases 
 sudo add-apt-repository -y ppa:tualatrix/ppa 
 sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 
@@ -27,7 +27,10 @@ sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 sudo apt-get update
 
 #install programs
-sudo apt-get -y install handbrake-gtk audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder wine1.7
+sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder wine1.7
+
+#not working in Saucy yet
+# handbrake-gtk
 
 #uninstall programs
 sudo apt-get -y autoremove rhythmbox empathy firefox
@@ -39,12 +42,12 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 if [ $var=x64 ]
 then
 
-#Getting install files for Chrome, Steam and Dropbox 64-bit
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
+#Getting install files for Chrome, Steam, Dropbox and Handbrake 64-bit
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb https://launchpad.net/~stebbins/+archive/handbrake-releases/+files/handbrake-gtk_0.9.9ppa1~raring1_amd64.deb
 
 else
-#Getting install files for Chrome, Steam and Dropbox 32-bit
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb
+#Getting install files for Chrome, Steam, Dropbox and Handbrake 32-bit
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb https://launchpad.net/~stebbins/+archive/handbrake-releases/+files/handbrake-gtk_0.9.9ppa1~raring1_i386.deb
 fi
 
 #Installing packages
@@ -73,7 +76,7 @@ sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf'
 nautilus &
 
 echo "Programs installed succesfully:
-Handbrake
+Handbrake (not in saucy yet)
 Audacity
 Simplescreenrecorder
 Compiz
