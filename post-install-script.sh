@@ -23,7 +23,7 @@ sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 sudo apt-get update
 
 #install programs
-sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder icedtea-7-plugin openjdk-7-jre wine1.7
+sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
 
 #not working in Saucy yet
 # handbrake-gtk
@@ -35,7 +35,7 @@ sudo apt-get -y autoremove rhythmbox empathy firefox
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
 
 #Checking OS architecture
-if [ $var=x64 ]
+if [ $MACHTYPE = x86_64-pc-linux-gnu ]
 then
 
 #Getting install files for Chrome, Steam, Dropbox and Handbrake 64-bit
