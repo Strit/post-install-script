@@ -4,9 +4,6 @@
 echo "Adding Repositories and installing programs.
 Please type your password!"
 
-
-#Test with 64-bit and 32-bit code.
-
 #enable username on panel
 gsettings set com.canonical.indicator.session show-real-name-on-panel true
 
@@ -15,7 +12,6 @@ gsettings set com.canonical.desktop.interface scrollbar-mode normal
 
 #stop Nautilus
 killall nautilus
-
 
 #adding repo's
 sudo add-apt-repository -y ppa:ubuntu-wine/ppa
@@ -27,7 +23,7 @@ sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 sudo apt-get update
 
 #install programs
-sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder wine1.7
+sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder icedtea-7-plugin openjdk-7-jre wine1.7
 
 #not working in Saucy yet
 # handbrake-gtk
@@ -89,6 +85,7 @@ Filezilla
 Flash Player
 Restricted Extras
 Clementine
+Java Plugin
 Chrome
 Dropbox
 Steam
