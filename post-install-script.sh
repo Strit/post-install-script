@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Version 1.1
+#This script will download about 350 MB's of data, install 23 programs and remove 3.
+#Tested on Ubuntu 13.10 64-bit running on Virtualbox.
+
 
 echo "Adding Repositories and installing programs.
 Please type your password!"
@@ -57,7 +61,7 @@ sudo mv validators.py /usr/share/griffith/lib/validators.py
 
 #fix Griffiths Export PDF to create a better PDF
 wget http://www.strits.dk/files/PluginExportPDF.py
-sudo mv PluginExportPDF.py /usr/shar/griffith/lib/plugins/export/PluginExportPDF.py
+sudo mv PluginExportPDF.py /usr/share/griffith/lib/plugins/export/PluginExportPDF.py
 
 #enable DVD playback
 sudo /usr/share/doc/libdvdread4/install-css.sh
@@ -92,9 +96,8 @@ Steam
 Wine 1.7
 Video and DVD plugins"
 
-echo "Programs uninstalled succesfully:
+echo 
+"Programs uninstalled succesfully:
 Rhythmbox
 Empathy
 Firefox"
-
-#echo "Remember to install Wine1.7, Dropbox and Steam after this installation"
