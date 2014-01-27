@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Version 1.1
+#Version 1.2
 #This script will download about 350 MB's of data, install 23 programs and remove 3.
 #Tested on Ubuntu 13.10 64-bit running on Virtualbox.
 
@@ -30,13 +30,22 @@ sudo apt-get update
 sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith filezilla gksu flashplugin-installer ubuntu-restricted-extras clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
 
 #not working in Saucy yet
-# handbrake-gtk
+# handbrake-gtk (using raring .deb in a later command)
 
 #uninstall programs
 sudo apt-get -y autoremove rhythmbox empathy firefox
 
-#these are disabled to test if they are needed when Ubuntu is installed with 3rd party software.
+#these are disabled to test if they are needed when Ubuntu is installed with 3rd party software
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
+
+#Checking if the computer is a laptop and installing TLP if it is
+if [ -d /sys/class/power_supply/BAT0 ]
+then
+sudo add-apt-repository -y ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get -y install tlp tlp-rdw
+sudo tlp start
+fi
 
 #Checking OS architecture
 if [ $MACHTYPE = x86_64-pc-linux-gnu ]
@@ -76,7 +85,7 @@ sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf'
 nautilus &
 
 echo "Programs installed succesfully:
-Handbrake (not in saucy yet)
+Handbrake (not in saucy yet, installed raring package instead)
 Audacity
 Simplescreenrecorder
 Compiz
@@ -91,10 +100,14 @@ Restricted Extras
 Clementine
 Java Plugin
 Chrome
-Dropbox
+Dropbox 1.6
 Steam
 Wine 1.7
 Video and DVD plugins"
+
+if [ -d /sys/class/power_supply/BAT0 ]
+then echo "TLP power management"
+fi
 
 echo 
 "Programs uninstalled succesfully:
