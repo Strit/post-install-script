@@ -33,7 +33,7 @@ sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-mana
 # handbrake-gtk (using raring .deb in a later command)
 
 #uninstall programs
-sudo apt-get -y autoremove rhythmbox empathy firefox
+sudo apt-get -y autoremove rhythmbox empathy firefox totem
 
 #these are disabled to test if they are needed when Ubuntu is installed with 3rd party software
 #gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321
