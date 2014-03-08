@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Version 1.2
-#This script will download about 350 MB's of data, install 24 (25 if on a laptop) programs and remove 4.
-#Tested on Ubuntu 13.10 64-bit running on Virtualbox. Preparing for 14.04 (trusty thar). Needs testing on 14.04 (trusty thar).
+#This script will download about 343 MB's of data, install 24 (25 if on a laptop) programs and remove 4.
+#Tested on Ubuntu 13.10 64-bit running on Virtualbox. Tested on laptop with 14.04 Beta 1 64-bit.
 
 
 echo "Adding Repositories and installing programs.
@@ -48,7 +48,7 @@ sudo dpkg -i *.deb
 sudo apt-get -f -y install
 rm *.deb
 sudo service tlp start
-#fi
+fi
 
 #Checking OS architecture
 if [ $MACHTYPE = x86_64-pc-linux-gnu ]
@@ -79,7 +79,7 @@ sudo mv PluginExportPDF.py /usr/share/griffith/lib/plugins/export/PluginExportPD
 sudo /usr/share/doc/libdvdread4/install-css.sh
 
 #remove unwanted lenses
-sudo apt-get -y autoremove unity-lens-shopping unity-lens-music unity-lens-video unity-lens-gwibber unity-lens photo
+sudo apt-get -y autoremove unity-lens-shopping unity-lens-music unity-lens-video unity-lens-gwibber unity-lens-photo
 
 #disable guest session
 sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf'
