@@ -79,10 +79,11 @@ sudo mv PluginExportPDF.py /usr/share/griffith/lib/plugins/export/PluginExportPD
 sudo /usr/share/doc/libdvdread4/install-css.sh
 
 #remove unwanted lenses
-sudo apt-get -y autoremove unity-lens-shopping unity-lens-music unity-lens-video unity-lens-gwibber unity-lens-photo
+sudo apt-get -y autoremove unity-lens-music unity-lens-video unity-lens-gwibber unity-lens-photo
 
 #disable guest session
-sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf'
+#sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf'
+#sudo /usr/lib/lightdm/lightdm-set-defaults --allow-guest false
 
 #start Nautilus again
 nautilus &
