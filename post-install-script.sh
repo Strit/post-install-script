@@ -56,6 +56,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb h
 else
 #Getting install files for Chrome, Steam and Dropbox
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb
+fi
 
 #Installing packages
 sudo dpkg -i *.deb
