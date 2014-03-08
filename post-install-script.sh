@@ -2,7 +2,7 @@
 
 #Version 1.2
 #This script will download about 343 MB's of data, install 24 (25 if on a laptop) programs and remove 4.
-#Tested on Ubuntu 13.10 64-bit running on Virtualbox. Tested on laptop with 14.04 Beta 1 64-bit.
+#Tested on Ubuntu 14.04 64-bit in Virtualbox.
 
 
 echo "Adding Repositories and installing programs.
@@ -19,7 +19,6 @@ killall nautilus
 
 #adding repo's
 sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-#sudo add-apt-repository -y ppa:stebbins/handbrake-releases (might be in default repo's in Trusty)
 sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 
 #Update repo list
@@ -27,9 +26,6 @@ sudo apt-get update
 
 #install programs
 sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith handbrake filezilla gksu flashplugin-installer easytag ubuntu-restricted-extras clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
-
-#not ready for Saucy or Trusty yet
-# handbrake-gtk (using raring .deb in a later command, might be in Trusty default repo's)
 
 #uninstall programs
 sudo apt-get -y autoremove rhythmbox empathy firefox totem transmission-common transmission-gtk
@@ -54,13 +50,12 @@ fi
 if [ $MACHTYPE = x86_64-pc-linux-gnu ]
 then
 
-#Getting install files for Chrome, Steam, Dropbox and Handbrake 64-bit
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb #https://launchpad.net/~stebbins/+archive/handbrake-releases/+files/handbrake-gtk_0.9.9ppa1~raring1_amd64.deb
+#Getting install files for Chrome, Steam and Dropbox
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
 
 else
-#Getting install files for Chrome, Steam, Dropbox and Handbrake 32-bit
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb #https://launchpad.net/~stebbins/+archive/handbrake-releases/+files/handbrake-gtk_0.9.9ppa1~raring1_i386.deb
-fi
+#Getting install files for Chrome, Steam and Dropbox
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb
 
 #Installing packages
 sudo dpkg -i *.deb
@@ -82,8 +77,7 @@ sudo /usr/share/doc/libdvdread4/install-css.sh
 sudo apt-get -y autoremove unity-lens-music unity-lens-video unity-lens-gwibber unity-lens-photo
 
 #disable guest session
-#sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf'
-#sudo /usr/lib/lightdm/lightdm-set-defaults --allow-guest false
+sudo sh -c 'echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf'
 
 #start Nautilus again
 nautilus &
@@ -114,8 +108,7 @@ if [ -d /sys/class/power_supply/BAT0 ]
 then echo "TLP power management (not ready for Trusty yet, using Saucy package)"
 fi
 
-echo 
-"Programs uninstalled succesfully:
+echo "Programs uninstalled succesfully:
 Rhythmbox
 Empathy
 Firefox
