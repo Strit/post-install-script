@@ -65,7 +65,7 @@ rm *.deb
 
 #get griffith to work properly
 wget http://www.strits.dk/files/validators.py
-sudo mv validators.py /usr/share/griffith/lib/validators.py
+sudo mv validators.py /usr/share/griffith/lib/db/validators.py
 
 #fix Griffiths Export PDF to create a better PDF
 wget http://www.strits.dk/files/PluginExportPDF.py
