@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Version 1.2
-#This script will download about 343 MB's of data, install 24 (25 if on a laptop) programs and remove 4.
-#Tested on Ubuntu 14.04 64-bit in Virtualbox.
+#This script will download about 343 MB's of data, install 26 (27 if on a laptop) programs and remove 4.
+#Tested on Ubuntu 14.04 64-bit (daily build).
 
 
 echo "Adding Repositories and installing programs.
@@ -25,7 +25,7 @@ sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 sudo apt-get update
 
 #install programs
-sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith handbrake filezilla gksu flashplugin-installer easytag ubuntu-restricted-extras clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
+sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith handbrake filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
 
 #uninstall programs
 sudo apt-get -y autoremove rhythmbox empathy firefox totem transmission-common transmission-gtk
@@ -97,6 +97,7 @@ Filezilla
 Flash Player
 EasyTag
 Restricted Extras
+Youtube-dl
 Clementine
 Java Plugin
 Chrome
