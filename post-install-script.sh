@@ -36,13 +36,13 @@ sudo apt-get -y autoremove rhythmbox empathy firefox totem transmission-common t
 #Checking if the computer is a laptop and installing TLP if it is (not ready for Trusty yet, using Saucy package)
 if [ -d /sys/class/power_supply/BAT0 ]
 then
-#sudo add-apt-repository -y ppa:linrunner/tlp
-#sudo apt-get update
-#sudo apt-get -y install tlp tlp-rdw
-wget https://launchpad.net/~linrunner/+archive/tlp/+files/tlp_0.4-1~saucy_all.deb https://launchpad.net/~linrunner/+archive/tlp/+files/tlp-rdw_0.4-1~saucy_all.deb
-sudo dpkg -i *.deb
-sudo apt-get -f -y install
-rm *.deb
+sudo add-apt-repository -y ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get -y install tlp tlp-rdw
+#wget https://launchpad.net/~linrunner/+archive/tlp/+files/tlp_0.4-1~saucy_all.deb https://launchpad.net/~linrunner/+archive/tlp/+files/tlp-rdw_0.4-1~saucy_all.deb
+#sudo dpkg -i *.deb
+#sudo apt-get -f -y install
+#rm *.deb
 sudo service tlp start
 fi
 
