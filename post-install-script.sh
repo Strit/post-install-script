@@ -19,10 +19,10 @@ sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 sudo apt-get update
 
 #install programs
-sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith handbrake filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
+sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox unity-tweak-tool griffith handbrake filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin asunder icedtea-7-plugin openjdk-7-jre vuze wine1.7
 
 #uninstall programs
-sudo apt-get -y autoremove rhythmbox empathy firefox totem transmission-common transmission-gtk
+sudo apt-get -y autoremove rhythmbox empathy totem transmission-common transmission-gtk
 
 #Checking if the computer is a laptop and installing TLP if it is
 if [ -d /sys/class/power_supply/BAT0 ]
@@ -91,6 +91,8 @@ EasyTag
 Restricted Extras
 Youtube-dl
 Git Gui
+Hddtemp
+Lm-sensors
 Clementine
 Java Plugin
 Chrome
@@ -99,12 +101,11 @@ Steam
 Wine 1.7
 Video and DVD plugins"
 if [ -d /sys/class/power_supply/BAT0 ]
-then echo "TLP power management (not ready for Trusty yet, using Saucy package)"
+then echo "TLP power management"
 fi
 
 echo "Programs uninstalled succesfully:
 Rhythmbox
 Empathy
-Firefox
 Totem
 Transmission"
