@@ -2,7 +2,7 @@
 
 #Version 1.4
 #This script will download between 360 MB and 660 MB's of data depending on your OS.
-#Tested on Ubuntu 14.04 64-bit (final release), Lubuntu 64-bit (final release), Xubuntu 64-bit (final release) and Elementary OS Luna.
+#Tested on Ubuntu 14.04 64-bit, Lubuntu 14.04 64-bit, Xubuntu 14.04 64-bit and Elementary OS Luna 64-bit.
 
 #Defining variables
 os=$(cat /etc/issue.net | awk '{print $1}')
@@ -17,6 +17,9 @@ echo "Found Lubuntu"
 elif [ -d /usr/share/xubuntu ]
 then
 echo "Found Xubuntu"
+elif [ -d /usr/share/kubuntu-default-settings ]
+then
+echo "Found Kubuntu"
 else
 echo "Found Ubuntu"
 fi
@@ -36,18 +39,22 @@ sudo apt-get -y dist-upgrade
 if [[ $os == "elementary" ]]
 then
 echo "Installing extra packages to Elementary OS"
-sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk
+sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Installing extra packages to Lubuntu"
-sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk
+sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
 elif [ -d /usr/share/xubuntu ]
 then
 echo "Installing extra packages to Xubuntu"
-sudo apt-get -y install audacity simplescreenrecorder gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk
+sudo apt-get -y install audacity simplescreenrecorder gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
+elif [ -d /usr/share/kubuntu-default-settings ]
+then
+echo "Installing extra packages to Kubuntu"
+sudo apt-get -y install audacity simplescreenrecorder gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin deluge handbrake
 else
 echo "Installing extra packages to Ubuntu"
-sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7
+sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 handbrake
 fi
 
 #uninstall programs
@@ -63,13 +70,17 @@ elif [ -d /usr/share/xubuntu ]
 then
 echo "Removing unwanted packages from Xubuntu"
 sudo apt-get -y autoremove transmission-common transmission-gtk firefox gmusicbrowser parole abiword gnumeric mousepad 
+elif [ -d /usr/share/kubuntu-default-settings ]
+echo "Removing inwanted packages from Kubuntu"
+then
+sudo apt-get -y autoremove firefox amarok ktorrent kmail kaddressbook kmix dragonplayer kmousetool kate knotes
 else
 echo "Removing unwanted packages from Ubuntu"
 sudo apt-get -y autoremove rhythmbox empathy totem transmission-common transmission-gtk firefox
 fi
 
 #Checking if the computer is a laptop and installing TLP if it is
-if [ -d /sys/class/power_supply/BAT0 ]
+if [ -d /sys/class/power_supply/BAT* ]
 then
 echo "Installing TLP power management"
 sudo add-apt-repository -y ppa:linrunner/tlp
@@ -87,12 +98,12 @@ mkdir /tmp/script-files/
 if [ $MACHTYPE = x86_64-pc-linux-gnu ]
 then
 
-#Getting install files for Chrome, Steam and Dropbox 64-bit
-wget -P /tmp/script-files/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_amd64.deb
+#Getting install files for Chrome and Dropbox 64-bit
+wget -P /tmp/script-files/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_amd64.deb
 
 else
-#Getting install files for Chrome, Steam and Dropbox 32-bit
-wget -P /tmp/script-files/ https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb http://media.steampowered.com/client/installer/steam.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.0_i386.deb
+#Getting install files for Chrome and Dropbox 32-bit
+wget -P /tmp/script-files/ https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_i386.deb
 fi
 
 #Installing packages
@@ -118,15 +129,18 @@ sudo /usr/share/doc/libdvdread4/install-css.sh
 #remove unwanted lenses
 if [[ $os == "elementary" ]]
 then
-echo "This is Elementary OS, will not remove unity lenses, because they are not there."
+echo "This is Elementary OS, will not remove Unity lenses, because they are not there."
 elif [ -d /usr/share/lubuntu ]
 then
-echo "This is Lubuntu, will not remove unity lenses, because they are not there."
+echo "This is Lubuntu, will not remove Unity lenses, because they are not there."
 elif [ -d /usr/share/xubuntu ]
 then
-echo "This is Xubuntu, will not remove unity lenses, because they are not there."
+echo "This is Xubuntu, will not remove Unity lenses, because they are not there."
+elif [ -d /usr/share/kubuntu-default-settings ]
+then
+echo "This is Kubuntu, will not remove Unity lenses, because they are not there."
 else
-echo "Removing unwanted unity lenses."
+echo "Removing unwanted Unity lenses."
 sudo apt-get -y autoremove unity-lens-music unity-lens-video
 
 #disable guest session
@@ -141,155 +155,49 @@ rm -rf /tmp/script-files/
 if [[ $os == "elementary" ]]
 then
 echo "Programs installed succesfully on Elementary OS:
-Handbrake
-Audacity
-Simplescreenrecorder
-VLC Media Player
-Conky
-Virtualbox
-Griffith
-Gedit
-Thunderbird
-Filezilla
-Flash Player
-EasyTag
-Restricted Extras
-Youtube-dl
-Git Gui
-Hddtemp
-Lm-sensors
-Clementine
-Java Plugin
-Chrome
-Dropbox 1.6
-Steam
-Wine 1.7
-Video and DVD plugins
-Libre Office"
-if [ -d /sys/class/power_supply/BAT0 ]
-then echo "TLP power management"
+Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
+if [ -d /sys/class/power_supply/BAT* ]
+then echo "And TLP power management, because it's a laptop."
 fi
-
 echo "Programs uninstalled succesfully:
-Totem
-Empathy
-Noise
-Scratch
-Geary
-Midori"
+Totem, Empathy, Noise, Scratch, Geary and Midori"
+
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Programs installed succesfully on Lubuntu:
-Handbrake
-Audacity
-Simplescreenrecorder
-VLC Media Player
-Conky
-Virtualbox
-Griffith
-Gedit
-Thunderbird
-Filezilla
-Flash Player
-EasyTag
-Restricted Extras
-Youtube-dl
-Git Gui
-Hddtemp
-Lm-sensors
-Clementine
-Java Plugin
-Chrome
-Dropbox 1.6
-Steam
-Wine 1.7
-Video and DVD plugins
-Libre Office"
-if [ -d /sys/class/power_supply/BAT0 ]
-then echo "TLP power management"
+Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
+if [ -d /sys/class/power_supply/BAT* ]
+then echo "And TLP power management, because it's a laptop."
 fi
-
 echo "Programs uninstalled succesfully:
-Leafpad
-Audacious
-Transmission
-Firefox
-Sylpheed
-Abiword
-Gnumeric
-Gnome-Mplayer"
+Leafpad, Audacious, Transmission, Firefox, Sylpheed, Abiword, Gnumeric and Gnome-Mplayer"
+
 elif [ -d /usr/share/xubuntu ]
 then
 echo "Programs installed succesfully on Xubuntu:
-Handbrake
-Audacity
-Simplescreenrecorder
-VLC Media Player
-Conky
-Virtualbox
-Griffith
-Gedit
-Filezilla
-Flash Player
-EasyTag
-Restricted Extras
-Youtube-dl
-Git Gui
-Hddtemp
-Lm-sensors
-Clementine
-Java Plugin
-Chrome
-Dropbox 1.6
-Steam
-Wine 1.7
-Video and DVD plugins
-Libre Office"
-if [ -d /sys/class/power_supply/BAT0 ]
-then echo "TLP power management"
+Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
+if [ -d /sys/class/power_supply/BAT* ]
+then echo "And TLP power management, because it's a laptop."
 fi
-
 echo "Programs uninstalled succesfully:
-Transmission
-Firefox
-Gmusicbrowser
-Parole
-Abiword
-Gnumeric
-Mousepad"
+Transmission, Firefox, Gmusicbrowser, Parole, Abiword, Gnumeric and Mousepad"
+
+elif [ -d /usr/share/kubuntu-default-settings ]
+then
+echo "Programs installed succesfully on Kubuntu:
+Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Gedit, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Pidgin, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins"
+if [ -d /sys/class/power_supply/BAT* ]
+then echo "And TLP power management, because it's a laptop."
+fi
+echo "Programs uninstalled succesfully:
+Firefox, Amarok, Ktorrent, Kmail, Kaddressbook, Kmix, Dragonplayer, Kmousetool, Kate and Knotes"
+
 else
 echo "Programs installed succesfully on Ubuntu:
-Handbrake
-Audacity
-Simplescreenrecorder
-VLC Media Player
-Conky
-Virtualbox
-Griffith
-Filezilla
-Flash Player
-EasyTag
-Restricted Extras
-Youtube-dl
-Git Gui
-Hddtemp
-Lm-sensors
-Clementine
-Pidgin
-Java Plugin
-Chrome
-Dropbox 1.6
-Steam
-Wine 1.7
-Video and DVD plugins"
-if [ -d /sys/class/power_supply/BAT0 ]
-then echo "TLP power management"
+Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Pidgin, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins"
+if [ -d /sys/class/power_supply/BAT* ]
+then echo "And TLP power management, because it's a laptop."
 fi
-
 echo "Programs uninstalled succesfully:
-Transmission
-Firefox
-Rhythmbox
-Empathy
-Totem"
+Transmission, Firefox, Rhythmbox, Empathy and Totem"
 fi
