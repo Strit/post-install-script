@@ -1,16 +1,19 @@
 #!/bin/bash
 
 #Version 1.4
-#This script will download between 360 MB and 660 MB's of data depending on your OS.
-#Tested on Ubuntu 14.04 64-bit, Lubuntu 14.04 64-bit, Xubuntu 14.04 64-bit and Elementary OS Luna 64-bit.
+#This script will download between 85 MB and 660 MB's of data depending on your OS.
+#Tested on Ubuntu 14.04, Lubuntu 14.04, Xubuntu 14.04, Kubuntu 14.04, Linux Mint 17 and Elementary OS Luna.
 
 #Defining variables
-os=$(cat /etc/issue.net | awk '{print $1}')
+os=$(cat /etc/issue.net | awk '{print $1,$2}')
 
 #checking os
-if [[ "$os" == "elementary" ]]
+if [[ "$os" == "elementary OS" ]]
 then
 echo "Found Elementary OS"
+elif [[ "$os" == "Linux Mint" ]]
+then
+echo "Found Linux Mint"
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Found Lubuntu"
@@ -36,10 +39,14 @@ sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 #install programs
-if [[ $os == "elementary" ]]
+if [[ $os == "elementary OS" ]]
 then
 echo "Installing extra packages to Elementary OS"
 sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
+elif [[ $os == "Linux Mint" ]]
+then
+echo "Installing extra packages to Linux Mint"
+sudo apt-get -y install audacity simplescreenrecorder conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 handbrake
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Installing extra packages to Lubuntu"
@@ -58,10 +65,14 @@ sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-mana
 fi
 
 #uninstall programs
-if [[ $os == "elementary" ]]
+if [[ $os == "elementary OS" ]]
 then
 echo "Removing unwanted packages from Elementary OS"
 sudo apt-get -y autoremove empathy totem noise scratch-text-editor geary midori-granite
+elif [[ $os == "Linux Mint" ]]
+then
+echo "Removing unwanted packages from Linux Mint"
+sudo apt-get -y autoremove firefox transmission-common transmission-gtk banshee totem 
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Removing unwanted packages from Lubuntu"
@@ -127,9 +138,12 @@ sudo mv /tmp/script-files/PluginMovieIMDB.py /usr/share/griffith/lib/plugins/mov
 sudo /usr/share/doc/libdvdread4/install-css.sh
 
 #remove unwanted lenses
-if [[ $os == "elementary" ]]
+if [[ $os == "elementary OS" ]]
 then
 echo "This is Elementary OS, will not remove Unity lenses, because they are not there."
+elif [[ $os == "Linux Mint" ]]
+then
+echo "This is Linux Mint, will not remove Unity lenses, because they are not there."
 elif [ -d /usr/share/lubuntu ]
 then
 echo "This is Lubuntu, will not remove Unity lenses, because they are not there."
@@ -152,7 +166,7 @@ fi
 rm -rf /tmp/script-files/
 
 #tell user what programs where installed and which where uninstalled
-if [[ $os == "elementary" ]]
+if [[ $os == "elementary OS" ]]
 then
 echo "Programs installed succesfully on Elementary OS:
 Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
@@ -161,6 +175,16 @@ then echo "And TLP power management, because it's a laptop."
 fi
 echo "Programs uninstalled succesfully:
 Totem, Empathy, Noise, Scratch, Geary and Midori"
+
+elif [[ $os == "Linux Mint" ]]
+then
+echo "Programs installed succesfully on Linux Mint:
+Audacity, Simplescreenrecorder, Conky, Virtualbox, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm, sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins."
+if [ -d /sys/class/power_supply/BAT* ]
+then echo "And TLP power management, because it's a laptop."
+fi
+echo "Programs uninstalled succesfully:
+Totem, Transmission, Firefox and Banshee."
 
 elif [ -d /usr/share/lubuntu ]
 then
