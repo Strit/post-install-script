@@ -32,36 +32,36 @@ Please type your password!"
 
 #adding repo's
 sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 
 #Update repo list and current software
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 #install programs
+#There is a bug right now, keeping IcedTea-7-plugin to install properly on 14.10 based OS's.
 if [[ $os == "elementary OS" ]]
 then
 echo "Installing extra packages to Elementary OS"
-sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
+sudo apt-get -y install audacity kazam gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake chromium-browser
 elif [[ $os == "Linux Mint" ]]
 then
 echo "Installing extra packages to Linux Mint"
-sudo apt-get -y install audacity simplescreenrecorder conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 handbrake
+sudo apt-get -y install audacity kazam conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder openjdk-7-jre deluge wine1.7 handbrake chromium-browser
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Installing extra packages to Lubuntu"
-sudo apt-get -y install audacity simplescreenrecorder gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
+sudo apt-get -y install audacity kazam gedit thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake chromium-browser
 elif [ -d /usr/share/xubuntu ]
 then
 echo "Installing extra packages to Xubuntu"
-sudo apt-get -y install audacity simplescreenrecorder gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake
+sudo apt-get -y install audacity kazam gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder openjdk-7-jre deluge wine1.7 libreoffice libreoffice-gtk handbrake chromium-browser
 elif [ -d /usr/share/kubuntu-default-settings ]
 then
 echo "Installing extra packages to Kubuntu"
-sudo apt-get -y install audacity simplescreenrecorder gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder icedtea-7-plugin deluge handbrake
+sudo apt-get -y install audacity kazam gedit vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder openjdk-7-jre deluge handbrake chromium-browser
 else
 echo "Installing extra packages to Ubuntu"
-sudo apt-get -y install audacity simplescreenrecorder compizconfig-settings-manager vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder icedtea-7-plugin openjdk-7-jre deluge wine1.7 handbrake
+sudo apt-get -y install audacity kazam compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder openjdk-7-jre deluge wine1.7 handbrake chromium-browser
 fi
 
 #uninstall programs
@@ -82,8 +82,8 @@ then
 echo "Removing unwanted packages from Xubuntu"
 sudo apt-get -y autoremove transmission-common transmission-gtk firefox gmusicbrowser parole abiword gnumeric mousepad 
 elif [ -d /usr/share/kubuntu-default-settings ]
-echo "Removing inwanted packages from Kubuntu"
 then
+echo "Removing inwanted packages from Kubuntu"
 sudo apt-get -y autoremove firefox amarok ktorrent kmail kaddressbook kmix dragonplayer kmousetool kate knotes
 else
 echo "Removing unwanted packages from Ubuntu"
@@ -109,12 +109,12 @@ mkdir /tmp/script-files/
 if [ $MACHTYPE = x86_64-pc-linux-gnu ]
 then
 
-#Getting install files for Chrome and Dropbox 64-bit
-wget -P /tmp/script-files/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_amd64.deb
+#Getting install file for Dropbox 64-bit (dropbox installs, but will not run on 14.10 yet)
+wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_amd64.deb
 
 else
-#Getting install files for Chrome and Dropbox 32-bit
-wget -P /tmp/script-files/ https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_i386.deb
+#Getting install file for Dropbox 32-bit (dropbox installs, but will not run on 14.10 yet)
+wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_i386.deb
 fi
 
 #Installing packages
@@ -136,6 +136,9 @@ sudo mv /tmp/script-files/PluginMovieIMDB.py /usr/share/griffith/lib/plugins/mov
 
 #enable DVD playback
 sudo /usr/share/doc/libdvdread4/install-css.sh
+
+#enable hddtemp to run as daemon
+sudo sed -i 's/RUN_DAEMON="false"/RUN_DAEMON="true"/g' /etc/default/hddtemp
 
 #remove unwanted lenses
 if [[ $os == "elementary OS" ]]
@@ -169,7 +172,7 @@ rm -rf /tmp/script-files/
 if [[ $os == "elementary OS" ]]
 then
 echo "Programs installed succesfully on Elementary OS:
-Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
+Audacity, Kazam, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chromium, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
 if [ -d /sys/class/power_supply/BAT* ]
 then echo "And TLP power management, because it's a laptop."
 fi
@@ -179,7 +182,7 @@ Totem, Empathy, Noise, Scratch, Geary and Midori"
 elif [[ $os == "Linux Mint" ]]
 then
 echo "Programs installed succesfully on Linux Mint:
-Audacity, Simplescreenrecorder, Conky, Virtualbox, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm, sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins."
+Audacity, Kazam, Conky, Virtualbox, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm, sensors, Clementine, Java Plugin, Chromium, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins."
 if [ -d /sys/class/power_supply/BAT* ]
 then echo "And TLP power management, because it's a laptop."
 fi
@@ -189,7 +192,7 @@ Totem, Transmission, Firefox and Banshee."
 elif [ -d /usr/share/lubuntu ]
 then
 echo "Programs installed succesfully on Lubuntu:
-Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
+Handbrake, Audacity, Kazam, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Thunderbird, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chromium, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
 if [ -d /sys/class/power_supply/BAT* ]
 then echo "And TLP power management, because it's a laptop."
 fi
@@ -199,7 +202,7 @@ Leafpad, Audacious, Transmission, Firefox, Sylpheed, Abiword, Gnumeric and Gnome
 elif [ -d /usr/share/xubuntu ]
 then
 echo "Programs installed succesfully on Xubuntu:
-Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
+Handbrake, Audacity, Kazam, VLC Media Player, Conky, Virtualbox, Griffith, Gedit, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Java Plugin, Chromium, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins and Libre Office"
 if [ -d /sys/class/power_supply/BAT* ]
 then echo "And TLP power management, because it's a laptop."
 fi
@@ -209,7 +212,7 @@ Transmission, Firefox, Gmusicbrowser, Parole, Abiword, Gnumeric and Mousepad"
 elif [ -d /usr/share/kubuntu-default-settings ]
 then
 echo "Programs installed succesfully on Kubuntu:
-Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Gedit, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Pidgin, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins"
+Handbrake, Audacity, Kazam, VLC Media Player, Conky, Virtualbox, Gedit, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Pidgin, Java Plugin, Chromium, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins"
 if [ -d /sys/class/power_supply/BAT* ]
 then echo "And TLP power management, because it's a laptop."
 fi
@@ -218,7 +221,7 @@ Firefox, Amarok, Ktorrent, Kmail, Kaddressbook, Kmix, Dragonplayer, Kmousetool, 
 
 else
 echo "Programs installed succesfully on Ubuntu:
-Handbrake, Audacity, Simplescreenrecorder, VLC Media Player, Conky, Virtualbox, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Pidgin, Java Plugin, Chrome, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins"
+Handbrake, Audacity, Kazam, VLC Media Player, Conky, Compiz-Settings-Manager, Unity-Tweak-Tool, Virtualbox, Griffith, Filezilla, Flash Player, EasyTag, Restricted Extras, Youtube-dl, Git Gui, Hddtemp, Lm-sensors, Clementine, Pidgin, Java Plugin, Chromium, Dropbox 1.6.2, Wine 1.7, Video and DVD plugins"
 if [ -d /sys/class/power_supply/BAT* ]
 then echo "And TLP power management, because it's a laptop."
 fi
