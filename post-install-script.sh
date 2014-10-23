@@ -43,7 +43,6 @@ if [[ $os == "Manjaro Linux" ]]
 
 		#adding repo's
 		sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-		sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
 
 		#Update repo list and current software
 		sudo apt-get update
@@ -55,31 +54,31 @@ fi
 if [[ $os == "elementary OS" ]]
 	then
 	echo "Installing extra packages to Elementary OS"
-	sudo apt-get -y install audacity firefox simplescreenrecorder geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
+	sudo apt-get -y install audacity firefox kazam geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
 		elif [[ $os == "Linux Mint" ]]
 		then
 		echo "Installing extra packages to Linux Mint"
-		sudo apt-get -y install audacity simplescreenrecorder geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 handbrake
+		sudo apt-get -y install audacity kazam geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 handbrake
 			elif [[ $os == "Manjaro Linux" ]]
 			then
 			echo "Installing extra packages to Manjaro Linux"
-			sudo pacman -S --noconfirm audacity apache virtualbox geany conky filezilla easytag youtube-dl clementine asunder deluge wine handbrake simplescreenrecorder
-			yaourt -S --noconfirm dropbox griffith
+			sudo pacman -S --noconfirm audacity apache virtualbox geany conky filezilla easytag youtube-dl clementine asunder deluge wine handbrake
+			yaourt -S --noconfirm dropbox griffith kazam
 				elif [ -d /usr/share/lubuntu ]
 				then
 				echo "Installing extra packages to Lubuntu"
-				sudo apt-get -y install audacity simplescreenrecorder geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
+				sudo apt-get -y install audacity geany kazam thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
 					elif [ -d /usr/share/xubuntu ]
 					then
 					echo "Installing extra packages to Xubuntu"
-					sudo apt-get -y install audacity simplescreenrecorder geany vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
+					sudo apt-get -y install audacity kazam geany vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
 						elif [ -d /usr/share/kubuntu-default-settings ]
 						then
 						echo "Installing extra packages to Kubuntu"
-						sudo apt-get -y install audacity simplescreenrecorder geany vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge handbrake
+						sudo apt-get -y install audacity kazam geany vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge handbrake
 	else
 	echo "Installing extra packages to Ubuntu"
-	sudo apt-get -y install audacity simplescreenrecorder geany compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge wine1.7 handbrake
+	sudo apt-get -y install audacity kazam geany compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge wine1.7 handbrake
 fi
 
 #uninstall programs
@@ -94,7 +93,7 @@ if [[ $os == "elementary OS" ]]
 			elif [[ $os == "Manjaro Linux" ]]
 			then
 			echo "Removing unwanted packages from Manjaro Linux"
-			sudo pacman -Rs --noconfirm gimp
+			sudo pacman -Rs --noconfirm gimp xnoise
 				elif [ -d /usr/share/lubuntu ]
 				then
 				echo "Removing unwanted packages from Lubuntu"
@@ -117,7 +116,7 @@ mkdir /tmp/script-files/
 
 if [[ $os == "Manjaro Linux" ]]
 	then
-	echo " "
+	echo "Manjaro Linux has Laptop Mode Tools installed by default, so will not install TLP."
 	else
 	#Checking if the computer is a laptop and installing TLP if it is
 	if [ -d /sys/class/power_supply/BAT* ]
@@ -135,11 +134,11 @@ if [[ $os == "Manjaro Linux" ]]
 	if [ $MACHTYPE = x86_64-pc-linux-gnu ]
 		then
 
-		#Getting install file for Dropbox 64-bit (dropbox installs, but will not run on 14.10 yet)
+		#Getting install file for Dropbox 64-bit
 		wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_amd64.deb
 
 		else
-		#Getting install file for Dropbox 32-bit (dropbox installs, but will not run on 14.10 yet)
+		#Getting install file for Dropbox 32-bit
 		wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_i386.deb
 	fi
 
