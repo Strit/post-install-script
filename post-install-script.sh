@@ -62,7 +62,7 @@ if [[ $os == "elementary OS" ]]
 			elif [[ $os == "Manjaro Linux" ]]
 			then
 			echo "Installing extra packages to Manjaro Linux"
-			sudo pacman -S --noconfirm audacity apache virtualbox geany conky filezilla easytag youtube-dl clementine asunder deluge wine handbrake
+			sudo pacman -S --noconfirm audacity apache virtualbox geany conky filezilla easytag youtube-dl clementine asunder deluge wine handbrake evince
 			yaourt -S --noconfirm dropbox griffith kazam
 				elif [ -d /usr/share/lubuntu ]
 				then
@@ -93,7 +93,7 @@ if [[ $os == "elementary OS" ]]
 			elif [[ $os == "Manjaro Linux" ]]
 			then
 			echo "Removing unwanted packages from Manjaro Linux"
-			sudo pacman -Rs --noconfirm gimp xnoise
+			sudo pacman -Rs --noconfirm gimp xnoise raktpdf
 				elif [ -d /usr/share/lubuntu ]
 				then
 				echo "Removing unwanted packages from Lubuntu"
