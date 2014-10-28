@@ -62,7 +62,7 @@ if [[ $os == "elementary OS" ]]
 			elif [[ $os == "Manjaro Linux" ]]
 			then
 			echo "Installing extra packages to Manjaro Linux"
-			sudo pacman -S --noconfirm audacity apache virtualbox geany conky filezilla easytag youtube-dl clementine asunder deluge wine handbrake evince
+			sudo pacman -S --noconfirm audacity baobab virtualbox geany conky filezilla easytag youtube-dl clementine asunder deluge wine handbrake evince
 			yaourt -S --noconfirm dropbox griffith kazam
 				elif [ -d /usr/share/lubuntu ]
 				then
