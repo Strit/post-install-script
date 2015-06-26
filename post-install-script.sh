@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#This is a test!
+
 #Version 1.5
 #This script will download between 85 MB and 660 MB's of data depending on your OS.
 #Tested on Ubuntu 14.10, Lubuntu 14.10, Xubuntu 14.10, Kubuntu 14.10, Linux Mint 17, Manjaro Linux and Elementary OS Freya.
