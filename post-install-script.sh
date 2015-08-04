@@ -24,13 +24,7 @@ if [[ $os == "elementary OS" ]]
 echo "Found Ubuntu"
 fi
 
-if [[ $os == "Manjaro Linux" ]]
-	then
-	echo "Installing programs."
-	echo "Please type your password!"
-	sudo pacman -Syu
-	yaourt -Syu
-	elif [[ $os == "Arch Linux" ]]
+if  [[ $os == "Arch Linux" ]]
 		then
 		echo "Installing programs."
 		echo "Please type your password"
@@ -73,11 +67,6 @@ if [[ $os == "elementary OS" ]]
 		then
 		echo "Installing extra packages to Linux Mint"
 		sudo apt-get -y install audacity chromium-browser simplescreenrecorder geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 handbrake
-			elif [[ $os == "Manjaro Linux" ]]
-			then
-			echo "Installing extra packages to Manjaro Linux"
-			sudo pacman -S --noconfirm audacity chromium virtualbox dropbox simplescreenrecorder geany audacious conky filezilla easytag youtube-dl clementine asunder deluge wine wine_gecko wine-mono handbrake evince baobab soundconverter vorbis-tools hddtemp gnu-netcat
-			yaourt -Sa --noconfirm teamviewer9 griffith magicassistant
 				elif [[ $os == "Arch Linux" ]]
 				then
 				echo "Installing extra packages to Arch Linux"
@@ -97,10 +86,6 @@ if [[ $os == "elementary OS" ]]
 		then
 		echo "Removing unwanted packages from Linux Mint"
 		sudo apt-get -y autoremove transmission-common transmission-gtk banshee totem firefox
-			elif [[ $os == "Manjaro Linux" ]]
-			then
-			echo "Removing unwanted packages from Manjaro Linux"
-			sudo pacman -Rs --noconfirm guayadeque qpdfview firefox-i18n-da firefox
 				elif [[ $os == "Arch Linux" ]]
 				then
 				echo "No unwanted packages on Arch Linux"
@@ -112,18 +97,15 @@ fi
 #making temporary download folder
 mkdir /tmp/script-files/
 
-if [[ $os == "Manjaro Linux" ]]
-	then
-	echo "Manjaro already has battery saving applications installed."
-	elif [[ $os == "Arch Linux" ]]
+#Checking if the computer is a laptop and installing TLP if it is
+if [[ $os == "Arch Linux" ]]
 		then
 		if [ -d /sys/class/power_supply/BAT* ]
 			then
 			echo "Installing TLP power management"
 			sudo pacman -S tlp
 				else
-	echo "Battery not found. Will not install TLP"
-	#Checking if the computer is a laptop and installing TLP if it is
+			echo "Battery not found. Will not install TLP"
 	if [ -d /sys/class/power_supply/BAT* ]
 		then
 		echo "Installing TLP power management"
@@ -163,18 +145,17 @@ sudo mv /tmp/script-files/validators.py /usr/share/griffith/lib/db/validators.py
 wget -P /tmp/script-files/ http://www.strits.dk/files/PluginExportPDF.py
 sudo mv /tmp/script-files/PluginExportPDF.py /usr/share/griffith/lib/plugins/export/PluginExportPDF.py
 
-if [[ $os == "Manjaro Linux" ]] || [[ $os == "Arch Linux" ]]
+if [[ $os == "Arch Linux" ]]
 	then
 	echo " "
 	else
-#fix griffiths IMDB plugin
-wget -P /tmp/script-files/ http://www.strits.dk/files/PluginMovieIMDB.py
-sudo mv /tmp/script-files/PluginMovieIMDB.py /usr/share/griffith/lib/plugins/movie/PluginMovieIMDB.py
+		#fix griffiths IMDB plugin
+		wget -P /tmp/script-files/ http://www.strits.dk/files/PluginMovieIMDB.py
+		sudo mv /tmp/script-files/PluginMovieIMDB.py /usr/share/griffith/lib/plugins/movie/PluginMovieIMDB.py
 fi
 
-if [[ $os == "Manjaro Linux" ]] || [[ $os == "Arch Linux" ]]
+if [[ $os == "Arch Linux" ]]
 	then
-	echo "DVD playback is already enabled in Manjaro Linux."
 	sudo systemctl --system daemon-reload
 	sudo systemctl enable hddtemp
 	sudo systemctl start hddtemp
