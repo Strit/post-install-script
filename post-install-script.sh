@@ -63,11 +63,11 @@ fi
 if [[ $os == "elementary OS" ]]
 	then
 	echo "Installing extra packages to Elementary OS"
-	sudo apt-get -y install audacity chromium-browser kazam geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge wine1.7 libreoffice libreoffice-gtk handbrake
+	sudo apt-get -y install audacity chromium-browser kazam geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge libreoffice libreoffice-gtk handbrake
 		elif [[ $os == "Linux Mint" ]]
 		then
 		echo "Installing extra packages to Linux Mint"
-		sudo apt-get -y install audacity chromium-browser kazam geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge wine1.7 handbrake
+		sudo apt-get -y install audacity chromium-browser kazam geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge handbrake
 				elif [[ $os == "Arch Linux" ]]
 				then
 				echo "Installing extra packages to Arch Linux"
@@ -75,7 +75,7 @@ if [[ $os == "elementary OS" ]]
 				yaourt -Sa --noconfirm teamviewer9 pamac-aur dropbox griffith
 					else
 echo "Installing extra packages to Ubuntu"
-sudo apt-get -y install audacity chromium-browser kazam geany compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge wine1.7 handbrake
+sudo apt-get -y install audacity chromium-browser kazam geany compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge handbrake
 fi
 
 #uninstall programs
