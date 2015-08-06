@@ -1,9 +1,8 @@
 #!/bin/bash
 
-#Version 1.6
+#Version 1.7
 #This script will download between 85 MB and 660 MB's of data depending on your OS.
-#Tested on Ubuntu 15.04, Linux Mint 17.1, Arch Linux and Elementary OS Freya.
-#Getting ready for tests on Ubuntu 15.10, Linux Mint 17.2 and Arch Linux. Elementary should still work, as they are still using LTS packages.
+#Tested on Ubuntu 15.10, Linux Mint 17.2, Arch Linux and Elementary OS Freya.
 
 #Defining variables
 os=$(cat /etc/issue | grep '\n' | awk '{print $1,$2}')
