@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Version 1.7
-#This script will download between 85 MB and 660 MB's of data depending on your OS.
+#This script will download between 90 MB and 660 MB's of data depending on your OS.
 #Tested on Ubuntu 15.10, Linux Mint 17.2, Arch Linux and Elementary OS Freya.
 
 #Defining variables
