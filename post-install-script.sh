@@ -51,7 +51,7 @@ echo "Adding Repositories and installing programs."
 echo "Please type your password!"
 
 #adding repo's
-sudo add-apt-repository -y ppa:ubuntu-wine/ppa
+#sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 
 #Update repo list and current software
 sudo apt-get update
@@ -138,11 +138,11 @@ fi
 fi
 
 #get griffith to work properly
-wget -P /tmp/script-files/ http://www.strits.dk/files/validators.py
+wget -P /tmp/script-files/ https://www.strits.dk/files/validators.py
 sudo mv /tmp/script-files/validators.py /usr/share/griffith/lib/db/validators.py
 
 #fix Griffiths Export PDF to create a better PDF
-wget -P /tmp/script-files/ http://www.strits.dk/files/PluginExportPDF.py
+wget -P /tmp/script-files/ https://www.strits.dk/files/PluginExportPDF.py
 sudo mv /tmp/script-files/PluginExportPDF.py /usr/share/griffith/lib/plugins/export/PluginExportPDF.py
 
 if [[ $os == "Arch Linux" ]]
@@ -150,7 +150,7 @@ if [[ $os == "Arch Linux" ]]
 	echo " "
 	else
 		#fix griffiths IMDB plugin
-		wget -P /tmp/script-files/ http://www.strits.dk/files/PluginMovieIMDB.py
+		wget -P /tmp/script-files/ https://www.strits.dk/files/PluginMovieIMDB.py
 		sudo mv /tmp/script-files/PluginMovieIMDB.py /usr/share/griffith/lib/plugins/movie/PluginMovieIMDB.py
 fi
 
