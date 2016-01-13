@@ -51,7 +51,7 @@ echo "Adding Repositories and installing programs."
 echo "Please type your password!"
 
 #adding repo's
-#sudo add-apt-repository -y ppa:ubuntu-wine/ppa
+sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 
 #Update repo list and current software
 sudo apt-get update
@@ -62,11 +62,11 @@ fi
 if [[ $os == "elementary OS" ]]
 	then
 	echo "Installing extra packages to Elementary OS"
-	sudo apt-get -y install audacity chromium-browser kazam geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge libreoffice libreoffice-gtk handbrake
+	sudo apt-get -y install audacity chromium-browser kazam geany thunderbird vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge libreoffice libreoffice-gtk handbrake wine1.8
 		elif [[ $os == "Linux Mint" ]]
 		then
 		echo "Installing extra packages to Linux Mint"
-		sudo apt-get -y install audacity chromium-browser kazam geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge handbrake
+		sudo apt-get -y install audacity chromium-browser kazam geany conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine steam asunder deluge handbrake wine1.8
 				elif [[ $os == "Arch Linux" ]]
 				then
 				echo "Installing extra packages to Arch Linux"
@@ -74,7 +74,7 @@ if [[ $os == "elementary OS" ]]
 				yaourt -Sa --noconfirm teamviewer9 pamac-aur dropbox griffith
 					else
 echo "Installing extra packages to Ubuntu"
-sudo apt-get -y install audacity chromium-browser kazam geany compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge handbrake
+sudo apt-get -y install audacity chromium-browser kazam geany compizconfig-settings-manager unity-tweak-tool vlc conky virtualbox griffith filezilla gksu flashplugin-installer easytag curl ubuntu-restricted-extras youtube-dl git-gui hddtemp lm-sensors clementine pidgin steam asunder deluge handbrake wine1.8
 fi
 
 #uninstall programs
@@ -123,11 +123,11 @@ fi
 		then
 
 		#Getting install file for Dropbox 64-bit
-		wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_amd64.deb
+		wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
 
 		else
 	#Getting install file for Dropbox 32-bit
-	wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_1.6.2_i386.deb
+	wget -P /tmp/script-files/ https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_i386.deb
 	fi
 
 	#Installing packages
