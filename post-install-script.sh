@@ -2,7 +2,7 @@
 
 #Version 1.7
 #This script will download between 90 MB and 660 MB's of data depending on your OS.
-#Tested on Ubuntu 15.10, Linux Mint 17.2, Arch Linux and Elementary OS Freya.
+#Tested on Ubuntu 16.04, Linux Mint 17.3, Arch Linux and Elementary OS Freya.
 
 #Defining variables
 os=$(cat /etc/issue | grep '\n' | awk '{print $1,$2}')
@@ -163,7 +163,8 @@ if [[ $os == "Arch Linux" ]]
 	sudo systemctl start teamviewerd
 	else
 #enable DVD playback
-sudo /usr/share/doc/libdvdread4/install-css.sh
+#removed this line, because the file does not exist on ubuntu 16.04
+#sudo /usr/share/doc/libdvdread4/install-css.sh
 
 #enable hddtemp to run as daemon
 sudo sed -i 's/RUN_DAEMON="false"/RUN_DAEMON="true"/g' /etc/default/hddtemp
