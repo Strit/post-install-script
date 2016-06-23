@@ -1,4 +1,4 @@
-Post-Install-Script
+# Post-Install-Script
 
 This is a script I made back when I was using Ubuntu,
 to make it easier to re-install and get almost the same system I had before.
